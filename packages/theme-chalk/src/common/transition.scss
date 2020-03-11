@@ -1,0 +1,19 @@
+@import "var";
+.fade-in-linear-enter,
+.fade-in-linear-leave,
+.fade-in-linear-leave-active {
+  opacity: 0;
+}
+.fade-in-linear-enter-active,
+.fade-in-linear-leave-active {
+  transition: $--fade-linear-transition;
+}
+
+.cdst-fade-in-enter-active,
+.cdst-fade-in-leave-active {
+  transition: all .3s cubic-bezier(.55,0,.1,1);
+}
+.cdst-fade-in-enter,
+.cdst-fade-in-leave-active {
+  opacity: 0;
+}
