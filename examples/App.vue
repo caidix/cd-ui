@@ -15,7 +15,7 @@
         <cd-input v-model="formValidate.mail" type="text" />
       </cd-form-item>
     </cd-form>
-    <button @click="handleSubmit">提交</button>
+    <button @click="handleSubmit"><i class="icon-cd-icon-twiter"></i> 提交</button>
     <button @click="handleReset">重置</button>
   </div>
 </template>
