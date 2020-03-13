@@ -1,8 +1,14 @@
 <template>
   <div id="app">
     <cd-button type="primary">button</cd-button>
-    <cd-form labelPosition='right' ref="form" :model="formValidate" :rules="ruleValidate">
-      <cd-form-item prop="name" label="姓名：" :show-message="false">
+    <cd-form
+      labelPosition="right"
+      ref="form"
+      :model="formValidate"
+      :labelWidth="80"
+      :rules="ruleValidate"
+    >
+      <cd-form-item prop="name" label="姓名：">
         <cd-input v-model="formValidate.name" type="text" />
       </cd-form-item>
       <cd-form-item prop="mail" label="邮箱：">

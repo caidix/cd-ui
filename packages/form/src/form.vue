@@ -17,6 +17,9 @@ export default {
       type: Boolean,
       default: false
     },
+    labelWidth: {
+      type: Number
+    },
     labelPosition: {
       validator(value) {
         return ["left", "right", "top"].find(item => item === value) || "right";

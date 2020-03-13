@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
-    <label v-if="label" :class="prefixCls+'__label'">{{ label }}</label>
-    <div :class="prefixCls+'__content'">
+    <label v-if="label" :class="prefixCls+'__label'" :for="labelFor" :style="labelStyle">{{ label }}</label>
+    <div :class="prefixCls+'__content'" :style="contentStyle">
       <slot></slot>
       <div
         v-if="validateState === 'error' && showMessage && FormInstance.showMessage"
@@ -26,7 +26,10 @@ export default {
     prop: {
       type: String
     },
-    for: String,
+    labelFor: String,
+    labelWidth: {
+      type: Number
+    },
     showMessage: {
       type: Boolean,
       default: true
@@ -58,6 +61,28 @@ export default {
           [`${prefixCls}-required`]: this.required || this.isRequired
         }
       ];
+    },
+    labelStyle() {
+      let style = {};
+      let labelWidth =
+        this.labelWidth === 0 || this.labelWidth
+          ? this.labelWidth
+          : this.FormInstance.labelWidth;
+      if (labelWidth || labelWidth === 0) {
+        style.width = `${labelWidth}px`;
+      }
+      return style;
+    },
+    contentStyle() {
+      let style = {};
+      let labelWidth =
+        this.labelWidth === 0 || this.labelWidth
+          ? this.labelWidth
+          : this.FormInstance.labelWidth;
+      if (labelWidth || labelWidth === 0) {
+        style.marginLeft = `${labelWidth}px`;
+      }
+      return style;
     }
   },
   mounted() {
