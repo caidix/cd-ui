@@ -10,6 +10,7 @@
     "build:css": "gulp build --gulpfile ./gulpfile.js"
   },
   "dependencies": {
+    "async-validator": "^3.2.4",
     "core-js": "^3.6.4",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",

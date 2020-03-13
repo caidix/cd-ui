@@ -1,0 +1,83 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "mixins/utils";
+@include b(form) {
+  @include m(label-left) {
+    & .cd-form-item__label {
+      text-align: left;
+    }
+  }
+  @include m(label-top) {
+    & .cd-form-item__label {
+      float: none;
+      display: inline-block;
+      text-align: left;
+      padding: 0 0 10px 0;
+    }
+  }
+  @include m(hide-required) {
+    & .cd-form-item__label {
+      &::before{
+        display: none !important;
+      }
+    }
+  }
+  @include m(inline) {
+    & .cd-form-item {
+      display: inline-block;
+    }
+    & .cd-form-item__label{
+      display: inline-block;
+      float: none;
+    }
+    & .cd-form-item__content{
+      display: inline-block;
+      vertical-align: top;
+    }
+    &.cd-form--label-top .cd-form-item__content {
+      display: block;
+    }
+  }
+}
+@include b(form-item) {
+  @include utils-clearfix;
+  margin-bottom: 22px;
+  color: $--form-font-color;
+  &-required {
+    .cd-form-item__label::before {
+      content: "*";
+      line-height: 1;
+      color: $--color-error;
+      display: inline-block;
+      margin-right: 3px;
+      font-size: $--font-size-base;
+    }
+  }
+  @include e(content) {
+    font-size: $--font-size-base;
+    position: relative;
+    line-height: 32px;
+    @include utils-clearfix;
+
+    .cd-input-group {
+      vertical-align: top;
+    }
+  }
+  @include e(error) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-top: 4px;
+    line-height: 1;
+    color: $--color-error;
+    font-size: $--font-size-base;
+  }
+  @include e(label) {
+    vertical-align: middle;
+    font-size: $--font-size-base;
+    float: left;
+    text-align: right;
+    line-height: 1;
+    padding: 10px 12px 10px 0;
+  }
+}

@@ -7,8 +7,8 @@ $--border-transition-base: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1
 $--color-transition-base: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !default;
 
 // Typography
-$--font-path: 'fonts' !default;
-$--font-display: 'auto' !default;
+$--font-path: "fonts" !default;
+$--font-display: "auto" !default;
 /// fontSize|1|Font Size|0
 $--font-size-extra-large: 20px !default;
 /// fontSize|1|Font Size|0
@@ -38,3 +38,9 @@ $--size-base: 14px !default;
 $--index-normal: 1 !default;
 $--index-top: 1000 !default;
 $--index-popper: 2000 !default;
+
+/* color */
+$--color-error: #ed4014;
+
+/* Form */
+$--form-font-color: #515a6e;

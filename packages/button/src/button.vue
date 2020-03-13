@@ -6,18 +6,18 @@
 
 <script>
 export default {
-  name: 'cd-button',
+  name: "cd-button",
   props: {
     type: String
   }
-}
+};
 </script>
 
 <style scoped>
-  .cd-button {
-      display: inline-block;
-      padding: 3px 6px;
-      background: #000;
-      color: #fff;
-  }
+.cd-button {
+  display: inline-block;
+  padding: 3px 6px;
+  background: #000;
+  color: #fff;
+}
 </style>

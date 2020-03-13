@@ -1,6 +1,10 @@
-import Button from '~/button' 
+import Button from '~/button'
+import Form from '~/form'
+import FormItem from '~/form-item'
+import Input from '~/input'
 const components = [
-  Button
+  Button, FormItem,
+  Form, Input
 ]
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function (Vue) {
@@ -13,5 +17,6 @@ const install = function (Vue) {
 export default {
   version: '0.0.1',
   install,
-  Button
+  Button, FormItem,
+  Form, Input
 }
