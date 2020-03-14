@@ -1,6 +1,8 @@
 @import "mixins/mixins";
 @import "common/var";
 @import "mixins/_button";
+@import "common/transition";
+
 @include b(button) {
   display: inline-flex;
   line-height: 1;
@@ -46,6 +48,24 @@
       background-image: none;
       background-color: $--button-disabled-background-color;
       border-color: $--button-disabled-border-color;
+    }
+  }
+  @include when(loading) {
+    pointer-events: none;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: inherit;
+      background-color: $--font-color-disabled-base;
+      opacity: 0.4;
+    }
+    & .icon-cd-icon-spinner {
+      animation: xuanzhuan 1s linear 0s infinite;
     }
   }
   @include when(circle) {

@@ -17,3 +17,11 @@
 .cdst-fade-in-leave-active {
   opacity: 0;
 }
+@keyframes xuanzhuan {
+  0% {
+    transform:rotateZ(0);
+  }
+  100% {
+    transform:rotateZ(360deg);
+  }
+}

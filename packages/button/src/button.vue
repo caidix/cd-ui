@@ -3,15 +3,18 @@
     class="cd-button"
     @click="handleClick"
     :disabled="buttonDisabled"
+    :type="nativeType"
     :class="[
     type ? 'cd-button--' + type : '',
     {'is-circle': circle},
     {'is-plain': plain},
     {'is-round': round},
-    {'is-disabled': disabled}
+    {'is-disabled': disabled},
+    {'is-loading': loading},
   ]"
   >
     <i :class="getIcon" v-if="icon"></i>
+    <i class="icon-cd-icon-spinner" v-if="loading"></i>
     <!-- $slots.default用来访问被插槽分发的内容，没有就不渲染 -->
     <span class="cd-button--content" v-if="$slots.default">
       <slot></slot>
@@ -29,10 +32,12 @@ export default {
     plain: Boolean,
     circle: Boolean,
     round: Boolean,
-    disabled: {
+    disabled: Boolean,
+    loading: {
       type: Boolean,
       default: false
-    }
+    },
+    nativeType: String
   },
   mounted() {},
   computed: {
@@ -46,11 +51,8 @@ export default {
       }
       return classList;
     },
-    buttonDisabled () {
-      if (this.disabled) {
-        return 'disabled'
-      }
-      return '';
+    buttonDisabled() {
+      return this.disabled || this.loading;
     }
   },
   methods: {
