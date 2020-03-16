@@ -54,3 +54,48 @@ export function findBrothersComponents(context, componentName, exceptMe = true) 
   if (exceptMe) res.splice(index, 1);
   return res;
 }
+
+// 节流
+export function throttle(func, wait = 0, options = {}) {
+  const { leading = true, maxWait, trailing } = options
+  const ref = {
+    t: undefined,
+    isExecute: false,
+    maxWaitTimer: undefined,
+    last: undefined,
+  }
+  return function(...args) {
+    const main = () => func.apply(null, args)
+    if ('maxWait' in options && !ref.maxWaitTimer) {
+      ref.maxWaitTimer = setTimeout(() => {
+        if (!ref.isExecute) {
+          ref.maxWaitTimer = undefined
+          return main()
+        }
+      }, maxWait);
+    }
+    if (!ref.isExecute) {
+      if (leading) {
+        ref.isExecute = true
+        main()
+      }
+      if (!ref.last && trailing) {
+// 先记录下等下trailing模式要执行的函数
+        ref.last = main
+      }
+    }
+    if (ref.t === undefined) {
+      ref.t = setTimeout(() => {
+// wait时间内只能执行一次
+        ref.isExecute = false
+        ref.t = undefined
+        if (ref.last && trailing) {
+// 执行记录下来的函数
+          ref.isExecute = true
+          ref.last()
+          ref.last = undefined
+        }
+      }, wait);
+    }
+  }
+}

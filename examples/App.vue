@@ -1,15 +1,21 @@
 <template>
   <div id="app">
    <ButtonText/>
+   <FormText/>
+   <BackTopText/>
   </div>
 </template>
 
 <script>
 import ButtonText from './components/ButtonText'
+import FormText from './components/FormText'
+import BackTopText from './components/BackTopText'
 export default {
   name:"App",
   components: {
-    ButtonText
+    ButtonText,
+    FormText,
+    BackTopText
   }
 }
 </script>
@@ -17,5 +23,6 @@ export default {
 <style>
 #app {
   margin: 20px;
+  height: 2000px;
 }
 </style>

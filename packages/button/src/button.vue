@@ -1,9 +1,12 @@
 <template>
-  <button
+  <component
+    :is="elementType"
     class="cd-button"
     @click="handleClick"
     :disabled="buttonDisabled"
     :type="nativeType"
+    :href="to"
+    :target="to && target"
     :class="[
     type ? 'cd-button--' + type : '',
     {'is-circle': circle},
@@ -13,13 +16,13 @@
     {'is-loading': loading},
   ]"
   >
-    <i :class="getIcon" v-if="icon"></i>
+    <i :class="getIcon" v-if="icon && !loading"></i>
     <i class="icon-cd-icon-spinner" v-if="loading"></i>
     <!-- $slots.default用来访问被插槽分发的内容，没有就不渲染 -->
     <span class="cd-button--content" v-if="$slots.default">
       <slot></slot>
     </span>
-  </button>
+  </component>
 </template>
 
 <script>
@@ -32,7 +35,9 @@ export default {
     plain: Boolean,
     circle: Boolean,
     round: Boolean,
+    to: String,
     disabled: Boolean,
+    target: String,
     loading: {
       type: Boolean,
       default: false
@@ -50,6 +55,9 @@ export default {
         }
       }
       return classList;
+    },
+    elementType() {
+      return this.to ? "a" : "button";
     },
     buttonDisabled() {
       return this.disabled || this.loading;

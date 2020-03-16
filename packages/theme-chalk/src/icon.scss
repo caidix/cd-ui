@@ -21,9 +21,11 @@
   line-height: 1;
   vertical-align: baseline;
   display: inline-block;
-  color: transparent; 
-  -webkit-background-clip: text;
-  background-image: linear-gradient(225deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  &.linear-color {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(225deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  }
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

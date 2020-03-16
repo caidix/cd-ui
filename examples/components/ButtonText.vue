@@ -6,6 +6,7 @@
       icon="on"
       :icon-position="'right'"
       plain
+      to="http://www.baidu.com"
       @click="handleClick"
     >button</cd-button>
   </div>
