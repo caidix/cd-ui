@@ -109,9 +109,11 @@ export default {
       }
       this.$off("on-form-change", this.onFieldChange);
       this.$off("on-form-blur", this.onFieldBlur);
+      // 监听绑定on-form-change/blur事件，其子组件可以通过dispatch找到该组件并触发事件。
       this.$on("on-form-change", this.onFieldChange);
       this.$on("on-form-blur", this.onFieldBlur);
     },
+    // 从自身/父组件内寻找规则
     getRules() {
       let formRules = this.FormInstance.rules;
       const selfRule = this.rules;
@@ -157,7 +159,6 @@ export default {
         this.validateState = !errors ? "success" : "error";
         this.validateMessage = errors ? errors[0].message : "";
         callback(this.validateMessage);
-        console.log(this.validateMessage);
       });
     },
     /**
