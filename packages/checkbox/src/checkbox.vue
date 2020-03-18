@@ -36,7 +36,7 @@
       />
     </span>
     <span class="cd-checkbox__label">
-      <span v-if="!$slots.default">{{label}}</span>
+      <span v-if="!$slots.default&&label">{{label}}</span>
       <slot></slot>
     </span>
   </label>
