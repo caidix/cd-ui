@@ -1,6 +1,8 @@
 import Button from '~/button'
 import Form from '~/form'
 import Backtop from '~/backtop'
+import Radio from '~/radio'
+import RadioGroup from '~/radio-group'
 import Checkbox from '~/checkbox'
 import CheckboxGroup from '~/checkbox-group'
 import FormItem from '~/form-item'
@@ -8,7 +10,9 @@ import Input from '~/input'
 const components = [
   Button, FormItem, Checkbox,
   Form, Input, Backtop,
-  CheckboxGroup
+  CheckboxGroup,
+  Radio,
+  RadioGroup
 ]
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function (Vue) {
@@ -23,5 +27,7 @@ export default {
   install,
   Button, FormItem, Checkbox,
   Form, Input, Backtop,
-  CheckboxGroup
+  CheckboxGroup,
+  Radio,
+  RadioGroup
 }
