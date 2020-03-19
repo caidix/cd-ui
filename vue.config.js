@@ -1,6 +1,7 @@
 const path = require('path');
 
 const config = {
+  runtimeCompiler: true,
   pages: {
     index: {
       entry: 'examples/main.js',
