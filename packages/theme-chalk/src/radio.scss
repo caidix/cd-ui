@@ -3,9 +3,8 @@
 @import "mixins/utils";
 @include b(radio-group) {
   @include when(vertical) {
-    .cd-radio {
-      display: block;
-    }
+    display: inline-flex;
+    flex-direction: column;
   }
 }
 @include b(radio) {

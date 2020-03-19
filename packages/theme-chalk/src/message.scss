@@ -1,0 +1,41 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "mixins/utils";
+@include b(message) {
+  box-sizing: border-box;
+  pointer-events: none;
+  border-radius: $--border-radius-base;
+  border-width: $--border-width-base;
+  border-style: $--border-style-base;
+  border-color: $--border-color-lighter;
+  padding: $--message-padding;
+  background-color: $--message-background-color;
+  font-size: $--font-size-base;
+  min-width: $--message-min-width;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  text-align: center;
+  align-items: center;
+  overflow: hidden;
+  transform: translateX(-50%);
+  z-index: 999;
+  transition: opacity 0.3s, transform 0.4s, top 0.4s;
+  @include e(content) {
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    &:focus {
+      outline-width: 0;
+    }
+  }
+  @include m(info) {
+    border-color: $--color-info;
+    color: $--color-info;
+  }
+}
+.cd-message-fade-enter,
+.cd-message-fade-leave-active {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}

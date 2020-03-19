@@ -8,6 +8,7 @@
     <cd-radio-group vertical v-model="groupValue" @on-change="change">
       <cd-radio label="帅哥" disabled></cd-radio>
       <cd-radio label="酷哥"></cd-radio>
+      <cd-radio label="猛哥"></cd-radio>
     </cd-radio-group>
     <cd-button type="info" plain @click="handleRadio">更改radioValue</cd-button>
   </div>

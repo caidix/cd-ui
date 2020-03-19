@@ -64,7 +64,12 @@ export default {
         const Component = Vue.extend(parseStrToFunc);
         // 在这里调用了 $mount 方法对组件进行了手动渲染，此时并未对组件进行挂载，但是渲染后的component
         // 已经是一个标准的vue实例， 可以访问到它的$el属性(即实例)
-        this.component = new Component().$mount();
+        this.component = new Component();
+        /**
+         *  在此时插入属性是不会触发vue的监听的，因为已经渲染不会被vue劫持，通常用来存放一些静态属性
+            this.component.wohen="我和我的祖国"
+         */
+        this.component.$mount()
         // 也可以将渲染的元素根节点挂在载body上：document.body.appendChild(component.$el);
         this.$refs.display.appendChild(this.component.$el);
 

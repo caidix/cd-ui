@@ -208,3 +208,9 @@ $--radio-disabled-input-fill: #f3f9f1 !default;
 $--radio-disabled-border-color: $--border-color-base !default;
 $--radio-disabled-icon-color: $--color-text-placeholder !default;
 $--radio-disabled-checked-icon-color: $--color-text-placeholder !default;
+
+/* Message */
+$--message-shadow: $--base-box-shadow !default;
+$--message-min-width: 300px !default;
+$--message-background-color: #edf2fc !default;
+$--message-padding: 10px 15px !default;

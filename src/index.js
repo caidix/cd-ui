@@ -6,6 +6,7 @@ import RadioGroup from '~/radio-group'
 import Checkbox from '~/checkbox'
 import CheckboxGroup from '~/checkbox-group'
 import FormItem from '~/form-item'
+import Message from '~/message'
 import Input from '~/input'
 const components = [
   Button, FormItem, Checkbox,
@@ -21,7 +22,9 @@ const install = function (Vue) {
   components.forEach(component => {
     Vue.component(component.name, component);
   })
+  Vue.prototype.$cdmessage = Message;
 }
+
 export default {
   version: '0.0.1',
   install,

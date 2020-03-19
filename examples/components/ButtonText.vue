@@ -8,7 +8,8 @@
       plain
       to="http://www.baidu.com"
       @click="handleClick"
-    >button</cd-button>
+    >跳转到百度</cd-button>
+    <cd-button type="warning" @click="handleWarning">警告</cd-button>
   </div>
 </template>
 
@@ -23,6 +24,12 @@ export default {
     handleClick() {
       this.loading = true;
       console.log("ok");
+    },
+    handleWarning() {
+      this.$cdmessage({
+        message: "向天再借五百年",
+        duration: 8000
+      });
     }
   }
 };
