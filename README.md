@@ -1,24 +1,23 @@
 # cd-ui
+粉色系简易vue组件---这才是猛男应该做的事嗷。
 
-## Project setup
+## 依赖下载
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行开发模式
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+npm run watch
 ```
 
-### Run your tests
+### 组件化打包
 ```
-npm run test
+npm run lib
+npm run build:css
 ```
+### Form表单认证
+See [async-validator](https://github.com/yiminghe/async-validator).
 
 ### Lints and fixes files
 ```
