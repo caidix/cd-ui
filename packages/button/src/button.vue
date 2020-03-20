@@ -17,7 +17,7 @@
   ]"
   >
     <i :class="getIcon" v-if="icon && !loading"></i>
-    <i class="icon-cd-icon-spinner" v-if="loading"></i>
+    <i class="icon-cd-spinner" v-if="loading"></i>
     <!-- $slots.default用来访问被插槽分发的内容，没有就不渲染 -->
     <span class="cd-button--content" v-if="$slots.default">
       <slot></slot>
@@ -49,7 +49,7 @@ export default {
     getIcon() {
       let classList = [];
       if (this.icon) {
-        classList.push(`icon-cd-icon-${this.icon}`);
+        classList.push(`icon-cd-${this.icon}`);
         if (this.iconPosition && this.iconPosition === "right") {
           classList.push("cd-button__icon-order");
         }

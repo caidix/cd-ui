@@ -21,7 +21,7 @@
       </cd-form-item>
     </cd-form>
     <button @click="handleSubmit">
-      <i class="icon-cd-icon-twiter"></i> 提交
+      <i class="icon-cd-twiter"></i> 提交
     </button>
     <button @click="handleReset">重置</button>
   </div>

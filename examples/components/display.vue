@@ -56,7 +56,6 @@ export default {
     renderCode() {
       this.splitCode();
       if (this.html !== "" && this.js !== "") {
-        console.log(this.js)
         // new Function 函数将字符串类型的js转换为对象。
         // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function
         const parseStrToFunc = new Function(this.js)();

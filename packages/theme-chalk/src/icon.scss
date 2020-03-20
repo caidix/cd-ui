@@ -9,8 +9,8 @@
   font-style: normal;
 }
 
-[class^="icon-cd-icon-"],
-[class*="icon-cd-icon-"] {
+[class^="icon-cd-"],
+[class*="icon-cd-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "iconfont" !important;
   speak: none;
@@ -30,11 +30,55 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-cd-icon-twiter:before {
+.icon-cd-info-circle:before {
+  content: "\e6ca";
+}
+
+.icon-cd-info-circle-outline:before {
+  content: "\e6a3";
+}
+
+.icon-cd-error-circle:before {
+  content: "\e7e7";
+}
+
+.icon-cd-error-circle-outline:before {
+  content: "\e682";
+}
+
+.icon-cd-bulb-outline:before {
+  content: "\e6a5";
+}
+
+.icon-cd-warning-outline:before {
+  content: "\e605";
+}
+
+.icon-cd-warning-circlet-outline:before {
+  content: "\e76e";
+}
+
+.icon-cd-warning:before {
+  content: "\e609";
+}
+
+.icon-cd-success-circle:before {
+  content: "\e905";
+}
+
+.icon-cd-warning-circle:before {
+  content: "\e67f";
+}
+
+.icon-cd-success-circle-outline:before {
+  content: "\e911";
+}
+
+.icon-cd-twiter:before {
   content: "\e612";
 }
 
-.icon-cd-icon-personal-selected:before {
+.icon-cd-personal:before {
   content: "\e604";
 }
 
@@ -42,156 +86,152 @@
   content: "\e629";
 }
 
-.icon-cd-icon-delete:before {
+.icon-cd-delete:before {
   content: "\e628";
 }
 
-.icon-cd-icon-on:before {
+.icon-cd-on:before {
   content: "\e60b";
 }
 
-.icon-cd-icon-artboard-copy:before {
+.icon-cd-artboard-copy:before {
   content: "\e63b";
 }
 
-.icon-cd-icon-radio-button-on:before {
+.icon-cd-radio-on:before {
   content: "\e910";
 }
 
-.icon-cd-icon-skip-backward:before {
+.icon-cd-skip-backward:before {
   content: "\e927";
 }
 
-.icon-cd-icon-right:before {
+.icon-cd-right:before {
   content: "\e63c";
 }
 
-.icon-cd-icon-paper-plane:before {
+.icon-cd-paper-plane:before {
   content: "\e601";
 }
 
-.icon-cd-icon-unlock:before {
+.icon-cd-unlock:before {
   content: "\e6d8";
 }
 
-.icon-cd-icon-down:before {
+.icon-cd-left:before {
   content: "\e600";
 }
 
-.icon-cd-icon-refresh:before {
+.icon-cd-refresh:before {
   content: "\e606";
 }
 
-.icon-cd-icon-map:before {
+.icon-cd-map:before {
   content: "\e674";
 }
 
-.icon-cd-icon-star:before {
+.icon-cd-star:before {
   content: "\e6ad";
 }
 
-.icon-cd-icon-build:before {
+.icon-cd-build:before {
   content: "\e7ae";
 }
 
-.icon-cd-icon-lock:before {
+.icon-cd-lock:before {
   content: "\e77f";
 }
 
-.icon-cd-icon-text:before {
+.icon-cd-text:before {
   content: "\e993";
 }
 
-.icon-cd-icon-menu:before {
+.icon-cd-menu:before {
   content: "\e71c";
 }
 
-.icon-cd-icon-skip-forward:before {
+.icon-cd-skip-forward:before {
   content: "\e6a4";
 }
 
-.icon-cd-icon-trash:before {
+.icon-cd-trash:before {
   content: "\eb52";
 }
 
-.icon-cd-icon-arrow-down:before {
+.icon-cd-arrow-down:before {
   content: "\e7b0";
 }
 
-.icon-cd-icon-spinner:before {
+.icon-cd-spinner:before {
   content: "\e602";
 }
 
-.icon-cd-icon-photos:before {
+.icon-cd-photos:before {
   content: "\e856";
 }
 
-.icon-cd-icon-eye-off:before {
+.icon-cd-eye-off:before {
   content: "\e6fa";
 }
 
-.icon-cd-icon-add:before {
+.icon-cd-add:before {
   content: "\e863";
 }
 
-.icon-cd-icon-wx:before {
+.icon-cd-wx:before {
   content: "\e64f";
 }
 
-.icon-cd-icon-download:before {
+.icon-cd-download:before {
   content: "\e655";
 }
 
-.icon-cd-icon-remove:before {
+.icon-cd-remove:before {
   content: "\e7fd";
 }
 
-.icon-cd-icon-help:before {
+.icon-cd-help:before {
   content: "\e608";
 }
 
-.icon-cd-icon-star-outline:before {
+.icon-cd-star-outline:before {
   content: "\e7b6";
 }
 
-.icon-cd-icon-help2:before {
+.icon-cd-help-circle:before {
   content: "\e74b";
 }
 
-.icon-cd-icon-tag:before {
+.icon-cd-tag:before {
   content: "\e607";
 }
 
-.icon-cd-icon-pin:before {
+.icon-cd-pin:before {
   content: "\e803";
 }
 
-.icon-cd-icon-radio-button-off:before {
+.icon-cd-radio-off:before {
   content: "\e808";
 }
 
-.icon-cd-icon-search:before {
+.icon-cd-search:before {
   content: "\e603";
 }
 
-.icon-cd-icon-eye:before {
+.icon-cd-eye:before {
   content: "\e73e";
 }
 
-.icon-cd-icon-volume-turn-on:before {
+.icon-cd-volume-turn-on:before {
   content: "\e7f8";
 }
 
-.icon-cd-icon-star-half:before {
+.icon-cd-star-half:before {
   content: "\e66d";
 }
 
-.icon-cd-icon-qq:before {
+.icon-cd-qq:before {
   content: "\e6be";
-}
-
-.icon-cd-icon-left:before {
-  content: "\e618";
 }
 
 .icon-diqiu:before {
@@ -225,3 +265,4 @@
 .icon-xingxing:before {
   content: "\e7c8";
 }
+
