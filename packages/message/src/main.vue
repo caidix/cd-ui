@@ -1,14 +1,23 @@
 <template>
-  <transition name="cd-message-fade">
+  <transition name="cd-message-fade" @after-leave="destoryElement">
     <div
       class="cd-message"
       :class="[
-    type && `cd-message--${type}`
+    type && `cd-message--${type}`,
+    {
+      'is-center': center,
+      'is-close': showClose,
+      'is-background':background
+    }
     ]"
       v-show="visible"
       :style="contentStyle"
+      @mouseenter="clearTimeout"
+      @mouseleave="startTimeout"
     >
+      <i :class="typeClass"></i>
       <p class="cd-message__content">{{message}}</p>
+      <i class="icon-cd-delete" v-if="showClose" @click="close"></i>
     </div>
   </transition>
 </template>
@@ -23,9 +32,12 @@ export default {
       verticalOffset: 20, // 距离顶部视口高度
       type: "info",
       iconClass: "",
+      center: false,
       onClose: null,
+      showClose: false,
       closed: false,
-      timer: null
+      timer: null,
+      background: false
     };
   },
   computed: {
@@ -35,6 +47,15 @@ export default {
         style.top = this.verticalOffset + "px";
       }
       return style;
+    },
+    typeClass() {
+      if (this.type && !this.iconClass) {
+        return this.type !== "loading"
+          ? `icon-cd-${this.type}-circle`
+          : "icon-cd-spinner";
+      } else {
+        return this.iconClass ? `icon-cd-${this.iconClass}` : "";
+      }
     }
   },
   watch: {
@@ -63,20 +84,19 @@ export default {
       }
     },
     clearTimeout() {
-      window.clearTimeout(this.timer);
-      this.timer = null;
+      if (this.timer !== null) {
+        window.clearTimeout(this.timer);
+        this.timer = null;
+      }
+    },
+    destoryElement() {
+      this.$destroy(true);
+      this.$el.parentNode.removeChild(this.$el);
     }
-    // mouseEvent(event) {
-
-    // }
   },
   mounted() {
     this.startTimeout();
     // document.addEventListener('mouseenter')
-  },
-  beforeDestroy() {
-    this.$destroy(true);
-    this.$el.parentNode.removeChild(this.$el);
   }
 };
 </script>

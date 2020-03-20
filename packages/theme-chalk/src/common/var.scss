@@ -50,11 +50,13 @@ $--color-white: #ffffff !default;
 /// color|1|Background Color|4
 $--color-black: #000000 !default;
 $--color-danger: #ed4014 !default;
+$--color-error: $--color-danger;
 $--color-success: #66bb6a !default;
 $--color-warning: #ffa631 !default;
 $--color-white: #ffffff !default;
 $--color-info: #7397ab !default;
 $--color-primary: #ffb3a7 !default;
+$--color-blue: #4b5cc4 !default;
 $--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
 $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default; /* 66b1ff */
 $--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default; /* 79bbff */
@@ -213,4 +215,4 @@ $--radio-disabled-checked-icon-color: $--color-text-placeholder !default;
 $--message-shadow: $--base-box-shadow !default;
 $--message-min-width: 300px !default;
 $--message-background-color: #edf2fc !default;
-$--message-padding: 10px 15px !default;
+$--message-padding: 15px 15px !default;

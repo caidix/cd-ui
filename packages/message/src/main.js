@@ -19,7 +19,7 @@ const Message = function (options) {
   let id = 'cdmessage_' + seed++;
   let onClose = options.onClose;
   options.onClose = function () {
-    Message.close(id, onClose)
+    return Message.close(id, onClose)
   }
   // 传递data参数（调用$mount前,此时还未完成渲染)
   instance = new MessageConstructor({
@@ -45,6 +45,23 @@ const Message = function (options) {
   return instance;
 }
 
+const msgType = [
+  "success", "info", "warning", "error", "loading"
+]
+msgType.map(item => {
+  Message[item] = (options) => {
+    options = options || {};
+    if (typeof options === 'string') {
+      options = {
+        message: options
+      }
+    } else if (!options.type) {
+      options.type = item;
+    }
+    return Message(options)
+  }
+})
+
 Message.close = function (id, fn) {
   let len = instances.length;
   let index = -1;
@@ -53,6 +70,7 @@ Message.close = function (id, fn) {
     if (instances[i] && instances[i].id === id) {
       index = i;
       removedHeight = instances[i].$el.offsetHeight;
+
       if (typeof fn === 'function') {
         fn(instances[i]);
       }
@@ -72,5 +90,11 @@ Message.close = function (id, fn) {
       parseInt(element.$el.style['top'], 10) - removedHeight - 16 + 'px';
   }
 }
-
+// 全局销毁
+Message.closeAll = function () {
+  //for (let i = 0; i < instances.length; i++)!!这样的for循环是错的，因为会随着close减少instances的数量
+  for (let i = instances.length - 1; i > -1; i--) {
+    instances[i].close();
+  }
+}
 export default Message;

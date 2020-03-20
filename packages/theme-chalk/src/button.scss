@@ -65,6 +65,7 @@
       opacity: 0.4;
     }
     & .icon-cd-spinner {
+      transform-origin: center;
       animation: xuanzhuan 1s linear 0s infinite;
     }
   }

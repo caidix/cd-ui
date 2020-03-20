@@ -3,24 +3,46 @@
 @import "mixins/utils";
 @include b(message) {
   box-sizing: border-box;
-  pointer-events: none;
   border-radius: $--border-radius-base;
   border-width: $--border-width-base;
+  border-color: $--color-white;
   border-style: $--border-style-base;
-  border-color: $--border-color-lighter;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   padding: $--message-padding;
-  background-color: $--message-background-color;
+  background-color: #fff;
   font-size: $--font-size-base;
   min-width: $--message-min-width;
   position: fixed;
   left: 50%;
   top: 20px;
-  text-align: center;
+  vertical-align: bottom;
   align-items: center;
+  display: flex;
   overflow: hidden;
   transform: translateX(-50%);
   z-index: 999;
   transition: opacity 0.3s, transform 0.4s, top 0.4s;
+  [class^="icon-cd-"] {
+    margin-right: 5px;
+  }
+  .icon-cd-spinner {
+    transform-origin: center;
+    animation: xuanzhuan 1s linear 0s infinite;
+    color: $--color-blue;
+  }
+  @include when(center) {
+    justify-content: center;
+  }
+  @include when(close) {
+    padding-right: 30px;
+    .icon-cd-delete {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5px;
+    }
+  }
   @include e(content) {
     padding: 0;
     font-size: 14px;
@@ -29,9 +51,41 @@
       outline-width: 0;
     }
   }
-  @include m(info) {
-    border-color: $--color-info;
-    color: $--color-info;
+  $types: (
+    "warning": $--color-warning,
+    "success": $--color-success,
+    "loading": $--color-primary,
+    "error": $--color-error,
+    "info": $--color-info
+  );
+  $typesBackground: (
+    "warning": $--color-warning-lighter,
+    "success": $--color-success-lighter,
+    "loading": $--color-primary-light-8,
+    "error": $--color-danger-lighter,
+    "info": $--color-info-lighter
+  );
+  @each $type, $color in $types {
+    @include m($type) {
+      .icon-cd-#{$type}-circle {
+        color: $color;
+      }
+    }
+  }
+  @include when(background) {
+    @each $type, $color in $types {
+      &.cd-message--#{$type} {
+        @if #{$type} == "loading" {
+          .icon-cd-spinner {
+            color: $color;
+          }
+        }
+        box-shadow: none;
+        color: $color;
+        border-color: $color;
+        background-color: map-get($map: $typesBackground, $key: $type);
+      }
+    }
   }
 }
 .cd-message-fade-enter,

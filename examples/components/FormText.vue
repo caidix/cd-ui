@@ -24,6 +24,7 @@
       <i class="icon-cd-twiter"></i> 提交
     </button>
     <button @click="handleReset">重置</button>
+     <i class="icon-cd-delete"></i>
   </div>
 </template>
 <script>
