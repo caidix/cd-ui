@@ -11,7 +11,7 @@
       @click.stop="scrollToTop"
     >
       <slot>
-        <i v-if="!$slots.default" class="icon-cd-icon-down"></i>
+        <i v-if="!$slots.default" class="icon-cd-left"></i>
       </slot>
     </div>
   </transition>

@@ -11,7 +11,7 @@
   @include e(normal) {
     font-size: $--font-size-extra-large;
     background:rgba($color: #000000, $alpha: .3);
-    .icon-cd-icon-down{
+    .icon-cd-left{
       transform: rotateZ(90deg);
     }
   }

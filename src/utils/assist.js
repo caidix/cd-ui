@@ -64,7 +64,7 @@ export function throttle(func, wait = 0, options = {}) {
     maxWaitTimer: undefined,
     last: undefined,
   }
-  return function(...args) {
+  return function (...args) {
     const main = () => func.apply(null, args)
     if ('maxWait' in options && !ref.maxWaitTimer) {
       ref.maxWaitTimer = setTimeout(() => {
@@ -80,17 +80,17 @@ export function throttle(func, wait = 0, options = {}) {
         main()
       }
       if (!ref.last && trailing) {
-// 先记录下等下trailing模式要执行的函数
+        // 先记录下等下trailing模式要执行的函数
         ref.last = main
       }
     }
     if (ref.t === undefined) {
       ref.t = setTimeout(() => {
-// wait时间内只能执行一次
+        // wait时间内只能执行一次
         ref.isExecute = false
         ref.t = undefined
         if (ref.last && trailing) {
-// 执行记录下来的函数
+          // 执行记录下来的函数
           ref.isExecute = true
           ref.last()
           ref.last = undefined
@@ -98,4 +98,45 @@ export function throttle(func, wait = 0, options = {}) {
       }, wait);
     }
   }
+}
+
+// 判断类型
+function typeOf(obj) {
+  const toString = Object.prototype.toString;
+  const map = {
+    '[object Boolean]': 'boolean',
+    '[object Number]': 'number',
+    '[object String]': 'string',
+    '[object Function]': 'function',
+    '[object Array]': 'array',
+    '[object Date]': 'date',
+    '[object RegExp]': 'regExp',
+    '[object Undefined]': 'undefined',
+    '[object Null]': 'null',
+    '[object Object]': 'object'
+  };
+  return map[toString.call(obj)];
+}
+
+// 深拷贝
+export function deepCopy(data) {
+  const t = typeOf(data);
+  let o;
+  if (t === 'array') {
+    o = [];
+  } else if (t === 'object') {
+    o = {}
+  } else {
+    return data;
+  }
+  if (t === "array") {
+    for (let i = 0; i < data.length; i++) {
+      o.push(deepCopy(data[i]))
+    }
+  } else if (t === 'object') {
+    for (const i in data) {
+      o[i] = deepCopy(data[i])
+    }
+  }
+  return o;
 }

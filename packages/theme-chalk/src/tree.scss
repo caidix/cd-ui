@@ -1,0 +1,10 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(tree) {
+}
+@include b(tree-node) {
+  .cd-checkbox {
+    margin-right: 0;
+  }
+}

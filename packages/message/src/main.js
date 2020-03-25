@@ -21,7 +21,7 @@ const Message = function (options) {
   options.onClose = function () {
     return Message.close(id, onClose)
   }
-  // 传递data参数（调用$mount前,此时还未完成渲染)
+  // 传递data参数（调用$mount前,此时还未完成渲染)，new之后的instance已经是一个标准的vue组件实例了
   instance = new MessageConstructor({
     data: options
   });
