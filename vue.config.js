@@ -1,7 +1,7 @@
 const path = require('path');
 
 const config = {
-  runtimeCompiler: true,
+  // runtimeCompiler: true,
   pages: {
     index: {
       entry: 'examples/main.js',

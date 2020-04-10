@@ -58,7 +58,7 @@ export default {
     handleExpand() {
       this.$set(this.data, "expand", !this.data.expand);
       if (this.TreeInstance) {
-        this.TreeInstance.emitEvent("on-toggle-expand", this.data);
+        this.TreeInstance.$emit("on-toggle-expand", this.data);
       }
     },
     handleCheck() {

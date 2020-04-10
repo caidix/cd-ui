@@ -24,13 +24,17 @@
       <i class="icon-cd-twiter"></i> 提交
     </button>
     <button @click="handleReset">重置</button>
-     <i class="icon-cd-delete"></i>
+    <i class="icon-cd-delete"></i>
+    <br />输入
+    <cd-input v-model="value" clearable></cd-input>
+    <br />
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      value: "",
       formValidate: {
         name: "",
         mail: "",
@@ -67,6 +71,9 @@ export default {
     },
     handleReset() {
       this.$refs.form.resetFields();
+    },
+    handerBlur(e) {
+      console.log(e);
     }
   }
 };

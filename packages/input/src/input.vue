@@ -1,8 +1,21 @@
 <template>
-  <div>
+  <div
+    class="cd-input"
+    :class="[
+    {
+      'cd-input--suffix': clearable
+    }
+  ]"
+    @mouseenter="hovering = true"
+    @mouseleave="hovering = false"
+  >
     <input
-      class="cd-input"
+      class="cd-input__inner"
+      :class="[{
+       'is-disabled':disabled
+      }]"
       type="text"
+      v-bind="$attrs"
       :readonly="readonly"
       :disabled="disabled"
       :value="currentValue"
@@ -12,13 +25,20 @@
       @blur="handleBlur"
       @focus="handleFocus"
     />
+    <span v-if="showSuffix()" class="cd-input__suffix-inner cd-input__suffix">
+      <i
+        v-if="showClear"
+        @mousedown.prevent
+        @click="handleClear"
+        class="cd-input__icon icon-cd-error-circle-outline cd-input__clear"
+      ></i>
+    </span>
   </div>
 </template>
 
 
 <script>
 import Emitter from "@/mixins/emitter.js";
-
 export default {
   name: "cd-input",
   mixins: [Emitter],
@@ -34,16 +54,29 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    clearable: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      currentValue: this.value
+      currentValue: this.value,
+      focused: false,
+      hovering: false
     };
   },
   watch: {
     value(val) {
       this.currentValue = val;
+    }
+  },
+  computed: {
+    showClear() {
+      return (
+        this.currentValue && this.clearable && (this.focused || this.hovering)
+      );
     }
   },
   methods: {
@@ -54,6 +87,7 @@ export default {
       this.dispatch("cd-form-item", "on-form-change", value);
     },
     handleBlur() {
+      this.focused = false;
       this.dispatch("cd-form-item", "on-form-blur", this.currentValue);
     },
     handleClick(evt) {
@@ -63,7 +97,15 @@ export default {
       this.$emit("change", evt.target.value);
     },
     handleFocus(evt) {
+      this.focused = true;
       this.$emit("focus", evt);
+    },
+    showSuffix() {
+      return this.clearable;
+    },
+    handleClear() {
+      this.$emit("input", "");
+      this.$emit("change", "");
     }
   }
 };

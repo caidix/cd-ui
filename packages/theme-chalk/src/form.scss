@@ -2,6 +2,7 @@
 @import "common/var";
 @import "mixins/utils";
 @include b(form) {
+  padding: 10px 5px;
   @include m(label-left) {
     & .cd-form-item__label {
       text-align: left;

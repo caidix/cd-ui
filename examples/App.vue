@@ -7,6 +7,7 @@
     <RadioBoxText />
     <TableText />
     <TreeText />
+    <HelloWorld />
     <Demo />
     <!-- <DisplayText :code="code"/> -->
   </div>
@@ -21,6 +22,7 @@ import RadioBoxText from "./components/RadioBoxText";
 import DisplayText from "./components/display";
 import TableText from "./components/TableText";
 import TreeText from "./components/TreeText";
+import HelloWorld from "./components/HelloWorld";
 import Demo from "./components/renderTemplate/demo";
 import defaultCode from "./views/default-code.js";
 export default {
@@ -33,8 +35,13 @@ export default {
     RadioBoxText,
     BackTopText,
     DisplayText,
+    HelloWorld,
     TreeText,
     Demo
+  },
+  mounted(){
+    console.log(this.$options)
+    console.log(this)
   },
   data() {
     return {
