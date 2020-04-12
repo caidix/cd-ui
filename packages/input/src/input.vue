@@ -2,20 +2,23 @@
   <div
     class="cd-input"
     :class="[
-    {
-      'cd-input--suffix': clearable
-    }
-  ]"
+      {
+        'cd-input--suffix': clearable
+      }
+    ]"
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
   >
     <input
       class="cd-input__inner"
-      :class="[{
-       'is-disabled':disabled
-      }]"
-      type="text"
+      :class="[
+        {
+          'is-disabled': disabled
+        }
+      ]"
+      :type="inputType"
       v-bind="$attrs"
+      :placeholder="placeholder"
       :readonly="readonly"
       :disabled="disabled"
       :value="currentValue"
@@ -32,10 +35,15 @@
         @click="handleClear"
         class="cd-input__icon icon-cd-error-circle-outline cd-input__clear"
       ></i>
+      <i
+        v-if="showPasswordIcon"
+        @mousedown.prevent
+        @click="handleShowPassword"
+        class="cd-input__icon icon-cd-eye cd-input__eye"
+      ></i>
     </span>
   </div>
 </template>
-
 
 <script>
 import Emitter from "@/mixins/emitter.js";
@@ -43,6 +51,10 @@ export default {
   name: "cd-input",
   mixins: [Emitter],
   props: {
+    placeholder: {
+      type:String,
+      default: '请输入'
+    },
     value: {
       type: String,
       default: ""
@@ -58,13 +70,23 @@ export default {
     clearable: {
       type: Boolean,
       default: false
+    },
+    showPassword: {
+      type: Boolean,
+      default: false
+    },
+    type: {
+      type: String,
+      default:'text'
     }
+    
   },
   data() {
     return {
       currentValue: this.value,
       focused: false,
-      hovering: false
+      hovering: false,
+      showPsdEye: this.showPassword
     };
   },
   watch: {
@@ -75,8 +97,16 @@ export default {
   computed: {
     showClear() {
       return (
-        this.currentValue && this.clearable && (this.focused || this.hovering)
+        this.currentValue && this.clearable && (this.focused || this.hovering) && !this.showPassword
       );
+    },
+    showPasswordIcon() {
+      return this.type === 'password' && this.showPassword;
+    },
+    inputType() {
+      let type = this.type;
+      if (type ==='password' && this.showPassword && this.showPsdEye) type = 'text';
+      return type 
     }
   },
   methods: {
@@ -101,11 +131,14 @@ export default {
       this.$emit("focus", evt);
     },
     showSuffix() {
-      return this.clearable;
+      return this.clearable || (this.showPassword && this.type === 'password');
     },
     handleClear() {
       this.$emit("input", "");
       this.$emit("change", "");
+    },
+    handleShowPassword() {
+      this.showPsdEye = !this.showPsdEye;
     }
   }
 };

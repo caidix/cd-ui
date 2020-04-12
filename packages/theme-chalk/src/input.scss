@@ -41,6 +41,13 @@
       color: $--color-primary;
     }
   }
+  & .cd-input__eye {
+    cursor: pointer;
+    color: #ccc;
+    &:hover {
+      color: $--color-info;
+    }
+  }
   @include e(suffix-inner) {
     pointer-events: all;
   }

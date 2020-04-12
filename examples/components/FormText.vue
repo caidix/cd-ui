@@ -26,7 +26,7 @@
     <button @click="handleReset">重置</button>
     <i class="icon-cd-delete"></i>
     <br />输入
-    <cd-input v-model="value" clearable></cd-input>
+    <cd-input v-model="value" type="password" showPassword></cd-input>
     <br />
   </div>
 </template>
