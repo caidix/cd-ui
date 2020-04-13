@@ -7,6 +7,7 @@
     <RadioBoxText />
     <TableText />
     <TreeText />
+    <RowcolText />
     <HelloWorld />
     <Demo />
     <!-- <DisplayText :code="code"/> -->
@@ -23,6 +24,7 @@ import DisplayText from "./components/display";
 import TableText from "./components/TableText";
 import TreeText from "./components/TreeText";
 import HelloWorld from "./components/HelloWorld";
+import RowcolText from "./components/rowcolText";
 import Demo from "./components/renderTemplate/demo";
 import defaultCode from "./views/default-code.js";
 export default {
@@ -35,6 +37,7 @@ export default {
     RadioBoxText,
     BackTopText,
     DisplayText,
+    RowcolText,
     HelloWorld,
     TreeText,
     Demo
