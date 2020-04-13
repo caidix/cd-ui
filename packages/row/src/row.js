@@ -1,19 +1,19 @@
 export default {
-  name: 'cd-row',
+  name: "cd-row",
   props: {
     tag: {
       type: String,
-      default: 'div'
+      default: "div"
     },
     type: String,
     gutter: Number,
     justify: {
       type: String,
-      default: 'start'
+      default: "start"
     },
     align: {
       type: String,
-      default: 'top'
+      default: "top"
     }
   },
   computed: {
@@ -27,13 +27,18 @@ export default {
     }
   },
   render(h) {
-    return h(this.tag, {
-      class: [
-        'cd-row', {
-
-        }
-      ],
-      style: this.style
-    }, this.$slots.default)
-  },
-}
+    return h(
+      this.tag,
+      {
+        class: [
+          "cd-row",
+          this.justify !== "start" ? `is-justify-${this.justify}` : "",
+          this.align !== "top" ? `is-align-${this.align}` : "",
+          this.type && this.type === "flex" ? "cd-row--flex" : ""
+        ],
+        style: this.style
+      },
+      this.$slots.default
+    );
+  }
+};

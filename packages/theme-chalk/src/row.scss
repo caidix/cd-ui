@@ -1,11 +1,23 @@
 @import "mixins/mixins";
 @import "common/var";
 @import "mixins/utils";
+$justify: center end space-between space-around;
 @include b(row) {
   position: relative;
   box-sizing: border-box;
   @include utils-clearfix;
   @include m(flex) {
-
+    display: flex;
+    @each $i in $justify {
+      @include when(justify-#{$i}) {
+        justify-content: $i;
+      }
+    }
+    @include when(align-middle) {
+      align-items: center;
+    }
+    @include when(align-bottom) {
+      align-items: flex-end;
+    }
   }
 }

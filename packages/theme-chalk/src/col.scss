@@ -10,17 +10,17 @@
 
 @for $i from 0 through 24 {
   .cd-col-#{$i} {
-    width: (#{$i}/ 24 * 100) * 1%;
+    width: ($i / 24 * 100) * 1%;
   }
   .cd-col-offset-#{$i} {
-    margin-left: #{i}/ 24 * 100 + "%";
+    margin-left: ($i / 24 * 100) * 1%;
   }
   .cd-col-pull-#{$i} {
     position: relative;
-    right: #{i}/ 24 * 100 + "%";
+    right: ($i / 24 * 100) * 1%;
   }
   .cd-col-push-#{$i} {
     position: relative;
-    left: #{i}/ 24 * 100 + "%";
+    left: ($i / 24 * 100) * 1%;
   }
 }

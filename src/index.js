@@ -21,7 +21,7 @@ const components = [
   RadioGroup,
   Table,
   Tree,
-  Pagination
+  Pagination,
   Row,
   Col
 ]
@@ -45,7 +45,7 @@ export default {
   RadioGroup,
   Table,
   Tree,
-  Pagination
+  Pagination,
   Row,
   Col
 }
