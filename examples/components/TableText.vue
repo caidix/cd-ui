@@ -1,9 +1,12 @@
 <template>
-  <cd-table :columns="columns" :data="data">
-    <template slot-scope="items" slot="address">
-      <div>{{items}}</div>
-    </template>
-  </cd-table>
+  <div>
+    <cd-table :columns="columns" :data="data">
+      <template slot-scope="items" slot="address">
+        <div>{{items}}</div>
+      </template>
+    </cd-table>
+    <cd-pagination total="100"></cd-pagination>
+  </div>
 </template>
 
 <script>
