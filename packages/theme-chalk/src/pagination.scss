@@ -2,5 +2,42 @@
 @import "common/var";
 
 @include b(pagination) {
-  
+  color: $--color-info;
+  .cd-pagination--left,
+  .cd-pagination--right {
+    cursor: pointer;
+    &:hover {
+      color: $--color-primary;
+    }
+  }
+  .checked {
+    color: $--color-primary;
+  }
+}
+@include b(paper) {
+  display: inline-block;
+  user-select: none;
+  .number {
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: center;
+    cursor: pointer;
+    text-align: center;
+    min-width: 30px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 5px;
+    &:hover {
+      color: $--color-primary;
+    }
+  }
+  @include e(border) {
+    .number {
+      background-image: $--color-blue;
+      border-radius: $--border-radius-base;
+      & + .checked {
+        background-image: linear-gradient($--color-primary, $--color-info);
+      }
+    }
+  }
 }

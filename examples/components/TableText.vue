@@ -5,12 +5,17 @@
         <div>{{items}}</div>
       </template>
     </cd-table>
-    <cd-pagination total="100"></cd-pagination>
+    <Pagination :totalPage="100"/>
+    <cd-pagination :total="80"></cd-pagination>
   </div>
 </template>
 
 <script>
+import Pagination from './pagination';
 export default {
+  components: {
+    Pagination
+  },
   data() {
     return {
       editName: "",
