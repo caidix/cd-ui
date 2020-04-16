@@ -34,6 +34,10 @@
     <button class="cd-pagination--right" :class="{'is-disabled':!nextPage}" @click="handleNextPage">
       <i class="icon-cd-right"></i>
     </button>
+    <span v-if="showPageInput">
+      前往
+      <cd-input class="cd-pagination__input" @keyup.enter.native="goOtherPage" v-model="pageGo"></cd-input>页
+    </span>
   </div>
 </template>
 <script>
@@ -72,6 +76,10 @@ export default {
       default: false
     },
     disableOnePage: {
+      type: Boolean,
+      default: false
+    },
+    showPageInput: {
       type: Boolean,
       default: false
     }
@@ -143,7 +151,8 @@ export default {
     return {
       internalCurrentPage: this.currentPage,
       showMorePrev: false,
-      showMoreNext: false
+      showMoreNext: false,
+      pageGo: 1
     };
   },
   methods: {
@@ -190,6 +199,17 @@ export default {
       const currentPage =
         this.internalCurrentPage - Math.floor(this.pagerCount / 2) - 1;
       if (currentPage) return;
+    },
+    goOtherPage(event) {
+      const target = event.target;
+      if (target.tagName !== "INPUT") return;
+      const newPage = Number(target.value);
+      const pageSizes = this.pageSizes;
+      if (isNaN(newPage) || newPage < 1 || newPage > pageSizes) {
+        this.pageGo = 1;
+        return;
+      }
+      this.internalCurrentPage = newPage;
     }
   }
 };

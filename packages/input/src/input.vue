@@ -27,6 +27,7 @@
       @change="handleChange"
       @blur="handleBlur"
       @focus="handleFocus"
+      @compositionend="handleCompositionEnd"
     />
     <span v-if="showSuffix()" class="cd-input__suffix-inner cd-input__suffix">
       <i
@@ -52,11 +53,11 @@ export default {
   mixins: [Emitter],
   props: {
     placeholder: {
-      type:String,
-      default: '请输入'
+      type: String,
+      default: "请输入"
     },
     value: {
-      type: String,
+      type: [Number, String],
       default: ""
     },
     readonly: {
@@ -77,9 +78,8 @@ export default {
     },
     type: {
       type: String,
-      default:'text'
+      default: "text"
     }
-    
   },
   data() {
     return {
@@ -97,16 +97,20 @@ export default {
   computed: {
     showClear() {
       return (
-        this.currentValue && this.clearable && (this.focused || this.hovering) && !this.showPassword
+        this.currentValue &&
+        this.clearable &&
+        (this.focused || this.hovering) &&
+        !this.showPassword
       );
     },
     showPasswordIcon() {
-      return this.type === 'password' && this.showPassword;
+      return this.type === "password" && this.showPassword;
     },
     inputType() {
       let type = this.type;
-      if (type ==='password' && this.showPassword && this.showPsdEye) type = 'text';
-      return type 
+      if (type === "password" && this.showPassword && this.showPsdEye)
+        type = "text";
+      return type;
     }
   },
   methods: {
@@ -131,7 +135,7 @@ export default {
       this.$emit("focus", evt);
     },
     showSuffix() {
-      return this.clearable || (this.showPassword && this.type === 'password');
+      return this.clearable || (this.showPassword && this.type === "password");
     },
     handleClear() {
       this.$emit("input", "");
@@ -139,6 +143,9 @@ export default {
     },
     handleShowPassword() {
       this.showPsdEye = !this.showPsdEye;
+    },
+    handleCompositionEnd(event) {
+      // console.log(event);
     }
   }
 };

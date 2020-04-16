@@ -3,6 +3,7 @@
 
 @include b(pagination) {
   color: #0a7a60;
+  margin: 3px 0;
   .cd-pagination--left,
   .cd-pagination--right {
     cursor: pointer;
@@ -37,6 +38,18 @@
       }
     }
   }
+  @include e(input) {
+    margin: 0 5px;
+    width: 50px;
+    .cd-input__inner {
+      padding: 0 3px;
+      text-align: center;
+      height: 28px;
+      &:focus{
+        border-color: $--color-primary;
+      }
+    }
+  }
 }
 @include b(paper) {
   display: inline-block;
@@ -54,10 +67,10 @@
     &:hover {
       color: $--color-primary;
     }
+  }
 
-    & + .checked {
-      color: $--color-primary;
-      cursor: default;
-    }
+  .checked {
+    color: $--color-primary;
+    cursor: default;
   }
 }
