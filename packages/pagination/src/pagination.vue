@@ -1,35 +1,37 @@
 <template>
-  <div class="cd-pagination" v-if="showPagination">
-    <button class="cd-pagination--left" v-show="prevPage" @click="handlePrevPage">
+  <div
+    class="cd-pagination"
+    :class="{'cd-pagination__background': background}"
+    v-if="showPagination"
+  >
+    <span v-if="showTotal" class="cd-pagination__total">共 {{total}} 条</span>
+    <button class="cd-pagination--left" :class="{'is-disabled':!prevPage}" @click="handlePrevPage">
       <i class="icon-cd-left"></i>
     </button>
-    <ul class="cd-paper">
+    <ul class="cd-paper" @click="currentChange">
       <li
         :class="['number', {
           checked: internalCurrentPage === 1
         }]"
-        @click="handlePage(1)"
-        v-if="pageSizes> 0"
+        v-if="pageSizes> 1"
       >1</li>
-      <li v-show="showMorePrev" :class="['number']" @click="handlePage(1)">...</li>
+      <li v-show="showMorePrev" class="number show-prev">...</li>
       <li
         v-for="i in pageList"
         :class="['number', {
           checked: i === internalCurrentPage
         }]"
         :key="i"
-        @click="handlePage(i)"
       >{{i}}</li>
-      <li v-show="showMoreNext" :class="['number']" @click="handlePage(1)">...</li>
+      <li v-show="showMoreNext" class="number show-next">...</li>
       <li
         :class="['number', {
           checked: internalCurrentPage === pageSizes
         }]"
         v-if="pageSizes> 0"
-        @click="handlePage(pageSizes)"
       >{{pageSizes}}</li>
     </ul>
-    <button class="cd-pagination--right" v-show="nextPage" @click="handleNextPage">
+    <button class="cd-pagination--right" :class="{'is-disabled':!nextPage}" @click="handleNextPage">
       <i class="icon-cd-right"></i>
     </button>
   </div>
@@ -60,11 +62,25 @@ export default {
         );
       },
       default: 7
+    },
+    showTotal: {
+      type: Boolean,
+      default: false
+    },
+    background: {
+      type: Boolean,
+      default: false
+    },
+    disableOnePage: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     showPagination() {
-      return this.total > 0;
+      return (
+        this.total > 0 && (this.disableOnePage ? this.pageSizes > 1 : true)
+      );
     },
     prevPage() {
       return this.internalCurrentPage !== 1;
@@ -73,7 +89,7 @@ export default {
       return this.internalCurrentPage !== this.pageSizes;
     },
     pageSizes() {
-      return Math.round(this.total / this.pageSize);
+      return Math.ceil(this.total / this.pageSize);
     },
     pageList() {
       let pager = [];
@@ -116,7 +132,13 @@ export default {
       return pager;
     }
   },
-  watch: {},
+  watch: {
+    pageSize(newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.$emit("size-change", newValue, oldValue);
+      }
+    }
+  },
   data() {
     return {
       internalCurrentPage: this.currentPage,
@@ -125,12 +147,33 @@ export default {
     };
   },
   methods: {
-    handlePage(i) {
-      this.internalCurrentPage = i;
+    currentChange(event) {
+      const target = event.target;
+      if (target.tagName === "UL") return;
+      let newPage = Number(event.target.textContent);
+      const currentPage = this.internalCurrentPage;
+      const pageOffset = Math.floor(this.pagerCount / 2);
+      if (target.className.indexOf("show-next") !== -1) {
+        newPage = currentPage + pageOffset;
+      }
+      if (target.className.indexOf("show-prev") !== -1) {
+        newPage = currentPage - pageOffset;
+      }
+      if (newPage < 1) {
+        newPage = 1;
+      }
+      if (newPage > this.pageSizes) {
+        newPage = this.pageSizes;
+      }
+      if (newPage !== currentPage) {
+        this.internalCurrentPage = newPage;
+        this.$emit("current-change", newPage);
+      }
     },
     handlePrevPage() {
       if (this.internalCurrentPage > 1) {
         this.internalCurrentPage--;
+        this.$emit("prev-page", this.internalCurrentPage);
       }
     },
     changeShowMore(showMorePrev, showMoreNext) {
@@ -140,11 +183,13 @@ export default {
     handleNextPage() {
       if (this.internalCurrentPage < this.pageSizes) {
         this.internalCurrentPage++;
+        this.$emit("next-page", this.internalCurrentPage);
       }
     },
     handleMorePrevPage() {
-      const currentPage = this.internalCurrentPage - Math.floor(this.pagerCount / 2) - 1
-      if (currentPage) return ;
+      const currentPage =
+        this.internalCurrentPage - Math.floor(this.pagerCount / 2) - 1;
+      if (currentPage) return;
     }
   }
 };

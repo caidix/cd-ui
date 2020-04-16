@@ -2,16 +2,40 @@
 @import "common/var";
 
 @include b(pagination) {
-  color: $--color-info;
+  color: #0a7a60;
   .cd-pagination--left,
   .cd-pagination--right {
     cursor: pointer;
+    text-align: center;
+    min-width: 30px;
+    height: 28px;
+    line-height: 28px;
     &:hover {
       color: $--color-primary;
     }
   }
-  .checked {
-    color: $--color-primary;
+  .is-disabled {
+    pointer-events: none;
+    color: $--color-info;
+  }
+  @include e(total) {
+    min-width: 36px;
+    vertical-align: center;
+    margin-right: 10px;
+  }
+  @include e(background) {
+    .cd-pagination--left,
+    .cd-pagination--right {
+      background-color: $--pagination-background-base;
+      border-radius: $--border-radius-base;
+    }
+    .number {
+      background-color: $--pagination-background-base;
+      border-radius: $--border-radius-base;
+      & + .checked {
+        background-image: $--pagination-background-color;
+      }
+    }
   }
 }
 @include b(paper) {
@@ -30,14 +54,10 @@
     &:hover {
       color: $--color-primary;
     }
-  }
-  @include e(border) {
-    .number {
-      background-image: $--color-blue;
-      border-radius: $--border-radius-base;
-      & + .checked {
-        background-image: linear-gradient($--color-primary, $--color-info);
-      }
+
+    & + .checked {
+      color: $--color-primary;
+      cursor: default;
     }
   }
 }

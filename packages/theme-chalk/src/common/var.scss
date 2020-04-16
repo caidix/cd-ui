@@ -226,3 +226,7 @@ $--input-padding-vertical: $--default-padding-vertical !default;
 $--input-padding-horizontal: $--default-padding-horizontal !default;
 $--input-focus-border: $--color-blue !default;
 $--input-height: 40px !default;
+
+/* Pagination */
+$--pagination-background-color: linear-gradient($--color-primary, #c93756) !default;
+$--pagination-background-base: #d3e0f3 !default;
