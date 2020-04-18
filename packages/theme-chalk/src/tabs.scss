@@ -1,0 +1,41 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(tabs) {
+  @include e(header) {
+    transform: translateX(0px);
+    transition: transform 0.3s;
+    width: 100%;
+    line-height: 1.5;
+    position: relative;
+    @include e(nav) {
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding: 8px 16px;
+      margin-right: 16px;
+      cursor: pointer;
+      @include when(active) {
+        color: $--color-primary;
+      }
+      @include when(disabled) {
+        cursor: not-allowed;
+        pointer-events: none;
+        color: $--color-info;
+      }
+      &:hover {
+        color: $--color-primary;
+      }
+    }
+    @include e(line) {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      height: 2px;
+      background-color: $--color-primary;
+      border-radius: 3px;
+      transition: transform 0.3s;
+    }
+  }
+}

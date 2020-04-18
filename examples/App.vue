@@ -8,6 +8,7 @@
     <TableText />
     <TreeText />
     <RowcolText />
+    <TabText />
     <HelloWorld />
     <Demo />
     <!-- <DisplayText :code="code"/> -->
@@ -25,6 +26,7 @@ import TableText from "./components/TableText";
 import TreeText from "./components/TreeText";
 import HelloWorld from "./components/HelloWorld";
 import RowcolText from "./components/rowcolText";
+import TabText from "./components/TabText";
 import Demo from "./components/renderTemplate/demo";
 import defaultCode from "./views/default-code.js";
 export default {
@@ -36,6 +38,7 @@ export default {
     CheckBoxText,
     RadioBoxText,
     BackTopText,
+    TabText,
     DisplayText,
     RowcolText,
     HelloWorld,
