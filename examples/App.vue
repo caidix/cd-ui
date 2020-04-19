@@ -9,6 +9,7 @@
     <TreeText />
     <RowcolText />
     <TabText />
+    <DatePickerText />
     <HelloWorld />
     <Demo />
     <!-- <DisplayText :code="code"/> -->
@@ -27,6 +28,7 @@ import TreeText from "./components/TreeText";
 import HelloWorld from "./components/HelloWorld";
 import RowcolText from "./components/rowcolText";
 import TabText from "./components/TabText";
+import DatePickerText from "./components/DatePickerText";
 import Demo from "./components/renderTemplate/demo";
 import defaultCode from "./views/default-code.js";
 export default {
@@ -39,15 +41,16 @@ export default {
     RadioBoxText,
     BackTopText,
     TabText,
+    DatePickerText,
     DisplayText,
     RowcolText,
     HelloWorld,
     TreeText,
     Demo
   },
-  mounted(){
-    console.log(this.$options)
-    console.log(this)
+  mounted() {
+    console.log(this.$options);
+    console.log(this);
   },
   data() {
     return {
